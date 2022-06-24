@@ -16,5 +16,8 @@ namespace BussinessObject.Models
         public string CategoryName { get; set; }
 
         public virtual ICollection<Product> Products { get; set; }
+        public override string ToString() {
+            return CategoryName.ToString();
+        }
     }
 }
