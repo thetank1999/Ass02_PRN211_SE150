@@ -18,13 +18,13 @@ namespace SaleWinApp
 
         private void btn_MemberMana_Add_Click(object sender, EventArgs e) {
             var frmMemberCreate= new frmMemberCreate();
-            frmMemberCreate.ShowDialog();
+            frmMemberCreate.Show();
         }
 
         private void btn_MemberMana_Update_Click(object sender, EventArgs e) {
             var tempMember = _memberRepository.GetMemberById(Int32.Parse(dgv_Members.SelectedRows[0].Cells[0].Value.ToString()));
             var frmMemberUpdate = new frmMemberUpdate(tempMember);
-            frmMemberUpdate.ShowDialog();
+            frmMemberUpdate.Show();
         }
 
         private void btn_MemberMana_Delete_Click(object sender, EventArgs e) {

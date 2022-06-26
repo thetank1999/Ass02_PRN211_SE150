@@ -23,12 +23,12 @@ namespace SaleWinApp
             {
                 this.Hide();
                 var formManagement = new frmGeneralManagement();
-                formManagement.ShowDialog();
+                formManagement.Show();
             } else if (tempMember != null)
                 {
                 this.Hide();
                 var formManagement = new frmGeneralManagement(tempMember);
-                formManagement.ShowDialog();
+                formManagement.Show();
             } else {
                 MessageBox.Show("Incorrect Email or Password. Please do it again");
 

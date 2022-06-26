@@ -13,7 +13,9 @@ namespace DataAccess.Repository
     {
         public void AddProduct(Product _Product) => ProductDAO.Instance.AddProduct(_Product);
 
-        public IEnumerable<Product> FilterProductList(string name) => ProductDAO.Instance.FilterProductList(name);
+        public IEnumerable<Product> FilterProductListByName(string name) => ProductDAO.Instance.FilterProductListByName(name);
+
+        public IEnumerable<Product> FilterProductListById(string id) => ProductDAO.Instance.FilterProductListById(id);
 
         public Product GetProductById(int id) => ProductDAO.Instance.GetProductById(id);
 
@@ -22,5 +24,9 @@ namespace DataAccess.Repository
         public void RemoveProduct(Product _Product) => ProductDAO.Instance.RemoveProduct(_Product);
 
         public void UpdateProduct(Product _Product) => ProductDAO.Instance.UpdateProduct(_Product);
+
+        public IEnumerable<Product> FilterProductListByPrice(string price) => ProductDAO.Instance.FilterProductListByPrice(price);
+
+        public IEnumerable<Product> FilterProductListByNoInstock(string stock) => ProductDAO.Instance.FilterProductListByNoInstock(stock);
     }
 }

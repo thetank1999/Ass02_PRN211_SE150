@@ -25,12 +25,49 @@ namespace DataAccess.DAO
         }
         #endregion
 
-        #region [ Search Product By StringName ]
-        public IEnumerable<Product> FilterProductList(string name) {
+        #region [ Search Product By: ]
+        // by string name
+        public IEnumerable<Product> FilterProductListByName(string name) {
             var ProductList = new List<Product>();
             try {
                 using var context = new FStoreDBContext();
                 ProductList = context.Products.Where(x => x.ProductName.Contains(name)).ToList(); //, StringComparison.CurrentCultureIgnoreCase
+            } catch (Exception ex) {
+                throw new Exception(ex.ToString());
+            }
+            return ProductList;
+        }
+
+        // by product ID 
+        public IEnumerable<Product> FilterProductListById(string id) {
+            var ProductList = new List<Product>();
+            try {
+                using var context = new FStoreDBContext();
+                ProductList = context.Products.Where(x => x.ProductId.ToString().Contains(id)).ToList();
+            } catch (Exception ex) {
+                throw new Exception(ex.ToString());
+            }
+            return ProductList;
+        }
+
+        //by Product Price
+        public IEnumerable<Product> FilterProductListByPrice(string price) {
+            var ProductList = new List<Product>();
+            try {
+                using var context = new FStoreDBContext();
+                ProductList = context.Products.Where(x => x.UnitPrice.ToString().Contains(price)).ToList();
+            } catch (Exception ex) {
+                throw new Exception(ex.ToString());
+            }
+            return ProductList;
+        }
+
+        //by product No. Instock
+        public IEnumerable<Product> FilterProductListByNoInstock(string stock) {
+            var ProductList = new List<Product>();
+            try {
+                using var context = new FStoreDBContext();
+                ProductList = context.Products.Where(x => x.UnitsInStock.ToString().Contains(stock)).ToList();
             } catch (Exception ex) {
                 throw new Exception(ex.ToString());
             }

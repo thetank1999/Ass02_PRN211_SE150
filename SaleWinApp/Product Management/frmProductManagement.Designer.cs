@@ -38,6 +38,12 @@
             this.btn_ReloadData = new System.Windows.Forms.Button();
             this.tB_SearchProduct = new System.Windows.Forms.TextBox();
             this.label_SearchProduct = new System.Windows.Forms.Label();
+            this.tB_SearchProductById = new System.Windows.Forms.TextBox();
+            this.tB_SearchProductByPrice = new System.Windows.Forms.TextBox();
+            this.tB_SearchProductByInstock = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_Product)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,7 +132,7 @@
             // btn_Delete
             // 
             this.btn_Delete.Enabled = false;
-            this.btn_Delete.Location = new System.Drawing.Point(925, 63);
+            this.btn_Delete.Location = new System.Drawing.Point(925, 12);
             this.btn_Delete.Name = "btn_Delete";
             this.btn_Delete.Size = new System.Drawing.Size(152, 34);
             this.btn_Delete.TabIndex = 2;
@@ -147,7 +153,7 @@
             // 
             // btn_ReloadData
             // 
-            this.btn_ReloadData.Location = new System.Drawing.Point(925, 159);
+            this.btn_ReloadData.Location = new System.Drawing.Point(767, 12);
             this.btn_ReloadData.Name = "btn_ReloadData";
             this.btn_ReloadData.Size = new System.Drawing.Size(152, 34);
             this.btn_ReloadData.TabIndex = 4;
@@ -157,26 +163,83 @@
             // 
             // tB_SearchProduct
             // 
-            this.tB_SearchProduct.Location = new System.Drawing.Point(12, 159);
+            this.tB_SearchProduct.Location = new System.Drawing.Point(420, 162);
             this.tB_SearchProduct.Name = "tB_SearchProduct";
-            this.tB_SearchProduct.Size = new System.Drawing.Size(211, 31);
+            this.tB_SearchProduct.Size = new System.Drawing.Size(200, 31);
             this.tB_SearchProduct.TabIndex = 5;
             this.tB_SearchProduct.TextChanged += new System.EventHandler(this.tB_SearchProduct_TextChanged);
             // 
             // label_SearchProduct
             // 
             this.label_SearchProduct.AutoSize = true;
-            this.label_SearchProduct.Location = new System.Drawing.Point(229, 164);
+            this.label_SearchProduct.Location = new System.Drawing.Point(420, 134);
             this.label_SearchProduct.Name = "label_SearchProduct";
-            this.label_SearchProduct.Size = new System.Drawing.Size(131, 25);
+            this.label_SearchProduct.Size = new System.Drawing.Size(211, 25);
             this.label_SearchProduct.TabIndex = 6;
-            this.label_SearchProduct.Text = "Search Product";
+            this.label_SearchProduct.Text = "Search Product By Name:";
+            // 
+            // tB_SearchProductById
+            // 
+            this.tB_SearchProductById.Location = new System.Drawing.Point(74, 162);
+            this.tB_SearchProductById.Name = "tB_SearchProductById";
+            this.tB_SearchProductById.Size = new System.Drawing.Size(150, 31);
+            this.tB_SearchProductById.TabIndex = 7;
+            this.tB_SearchProductById.TextChanged += new System.EventHandler(this.tB_SearchProductById_TextChanged);
+            // 
+            // tB_SearchProductByPrice
+            // 
+            this.tB_SearchProductByPrice.Location = new System.Drawing.Point(771, 162);
+            this.tB_SearchProductByPrice.Name = "tB_SearchProductByPrice";
+            this.tB_SearchProductByPrice.Size = new System.Drawing.Size(150, 31);
+            this.tB_SearchProductByPrice.TabIndex = 8;
+            this.tB_SearchProductByPrice.TextChanged += new System.EventHandler(this.tB_SearchProductByPrice_TextChanged);
+            // 
+            // tB_SearchProductByInstock
+            // 
+            this.tB_SearchProductByInstock.Location = new System.Drawing.Point(927, 162);
+            this.tB_SearchProductByInstock.Name = "tB_SearchProductByInstock";
+            this.tB_SearchProductByInstock.Size = new System.Drawing.Size(150, 31);
+            this.tB_SearchProductByInstock.TabIndex = 9;
+            this.tB_SearchProductByInstock.TextChanged += new System.EventHandler(this.tB_SearchProductByInstock_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(54, 134);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(185, 25);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Search Product By Id: ";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(785, 109);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(136, 50);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Search Product \r\nBy Price:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(942, 109);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(136, 50);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Search Product \r\nBy No. Instock:";
             // 
             // frmProductManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1089, 643);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tB_SearchProductByInstock);
+            this.Controls.Add(this.tB_SearchProductByPrice);
+            this.Controls.Add(this.tB_SearchProductById);
             this.Controls.Add(this.label_SearchProduct);
             this.Controls.Add(this.tB_SearchProduct);
             this.Controls.Add(this.btn_ReloadData);
@@ -207,5 +270,11 @@
         private System.Windows.Forms.Button btn_ReloadData;
         private System.Windows.Forms.TextBox tB_SearchProduct;
         private System.Windows.Forms.Label label_SearchProduct;
+        private System.Windows.Forms.TextBox tB_SearchProductById;
+        private System.Windows.Forms.TextBox tB_SearchProductByPrice;
+        private System.Windows.Forms.TextBox tB_SearchProductByInstock;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }

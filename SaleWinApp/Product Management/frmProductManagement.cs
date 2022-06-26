@@ -34,21 +34,39 @@ namespace SaleWinApp
         private void btn_Update_Click(object sender, EventArgs e) {
             var _tempProduct = _productRepository.GetProductById(Int32.Parse(dgv_Product.SelectedRows[0].Cells[0].Value.ToString()));
             var frmProductUpdate = new frmProductUpdate(_tempProduct);
-            frmProductUpdate.ShowDialog();
+            frmProductUpdate.Show();
         }
 
         private void btn_Add_Click(object sender, EventArgs e) {
             frmProductCreate frmProductCreate = new frmProductCreate();
-            frmProductCreate.ShowDialog();
+            frmProductCreate.Show();
         }
-
+        #region [ Search By ]
+        //by product name
         private void tB_SearchProduct_TextChanged(object sender, EventArgs e) {
-            _productList = _productRepository.FilterProductList(tB_SearchProduct.Text); //need something more 
+            _productList = _productRepository.FilterProductListByName(tB_SearchProduct.Text); 
+            this.LoadDataInto_DGV(_productList);
+        }
+        //by product price
+        private void tB_SearchProductByPrice_TextChanged(object sender, EventArgs e) {
+            _productList = _productRepository.FilterProductListByPrice(tB_SearchProductByPrice.Text);
             this.LoadDataInto_DGV(_productList);
         }
 
-        #region [ DGV - functions ]
+        //by product No. Instock
+        private void tB_SearchProductByInstock_TextChanged(object sender, EventArgs e) {
+            _productList = _productRepository.FilterProductListByNoInstock(tB_SearchProductByInstock.Text);
+            this.LoadDataInto_DGV(_productList);
+        }
 
+        //by product Id
+        private void tB_SearchProductById_TextChanged(object sender, EventArgs e) {
+            _productList = _productRepository.FilterProductListById(tB_SearchProductById.Text);
+            this.LoadDataInto_DGV(_productList);
+        }
+        #endregion
+
+        #region [ DGV - functions ]
         private void dgv_Product_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             if (dgv_Product.SelectedRows.Count == 1) {
                 btn_Delete.Enabled = true;
@@ -72,7 +90,5 @@ namespace SaleWinApp
             }
         }
         #endregion
-
-        
     }
 }
