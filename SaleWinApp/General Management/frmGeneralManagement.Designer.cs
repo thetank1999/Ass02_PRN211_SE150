@@ -29,7 +29,6 @@
             this.btn_OrderManagement = new System.Windows.Forms.Button();
             this.btn_ProductManagement = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.btn_CreateReport = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn_MemberManagement
@@ -72,27 +71,16 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "General Management";
             // 
-            // btn_CreateReport
-            // 
-            this.btn_CreateReport.Location = new System.Drawing.Point(281, 347);
-            this.btn_CreateReport.Name = "btn_CreateReport";
-            this.btn_CreateReport.Size = new System.Drawing.Size(232, 34);
-            this.btn_CreateReport.TabIndex = 4;
-            this.btn_CreateReport.Text = "Create Report";
-            this.btn_CreateReport.UseVisualStyleBackColor = true;
-            this.btn_CreateReport.Click += new System.EventHandler(this.btn_CreateReport_Click);
-            // 
-            // frmManagement
+            // frmGeneralManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btn_CreateReport);
+            this.ClientSize = new System.Drawing.Size(800, 343);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btn_ProductManagement);
             this.Controls.Add(this.btn_OrderManagement);
             this.Controls.Add(this.btn_MemberManagement);
-            this.Name = "frmManagement";
+            this.Name = "frmGeneralManagement";
             this.Text = "General Management";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -105,6 +93,5 @@
         private System.Windows.Forms.Button btn_OrderManagement;
         private System.Windows.Forms.Button btn_ProductManagement;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btn_CreateReport;
     }
 }

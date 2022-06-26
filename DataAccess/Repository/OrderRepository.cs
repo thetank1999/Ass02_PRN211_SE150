@@ -11,16 +11,17 @@ namespace DataAccess.Repository
 {
     public class OrderRepository : IOrderRepository
     {
-        void IOrderRepository.AddOrder(Order _Order) => OrderDAO.Instance.AddOrder(_Order);
+        public void AddOrder(Order _Order) => OrderDAO.Instance.AddOrder(_Order);
 
-        IEnumerable<Order> IOrderRepository.FilterOrderList(int MemberId) => OrderDAO.Instance.FilterOrderList(MemberId);
+        public IEnumerable<Order> FilterOrderListByDateTime(DateTime _from, DateTime _to) => OrderDAO.Instance.FilterOrderListByDateTime(_from, _to);
+        public IEnumerable<Order> FilterOrderListByMemberId(int MemberId) => OrderDAO.Instance.FilterOrderListByMemberId(MemberId);
 
-        Order IOrderRepository.GetOrderById(int id) => OrderDAO.Instance.GetOrderById(id);
+        public Order GetOrderById(int id) => OrderDAO.Instance.GetOrderById(id);
 
-        IEnumerable<Order> IOrderRepository.GetOrderList() => OrderDAO.Instance.GetOrderList();
+        public IEnumerable<Order> GetOrderList() => OrderDAO.Instance.GetOrderList();
 
-        void IOrderRepository.RemoveOrder(Order _Order) => OrderDAO.Instance.RemoveOrder(_Order);
+        public void RemoveOrder(Order _Order) => OrderDAO.Instance.RemoveOrder(_Order);
 
-        void IOrderRepository.UpdateOrder(Order _Order) => OrderDAO.Instance.UpdateOrder(_Order);
+        public void UpdateOrder(Order _Order) => OrderDAO.Instance.UpdateOrder(_Order);
     }
 }

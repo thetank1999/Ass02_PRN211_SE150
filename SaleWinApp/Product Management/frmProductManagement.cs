@@ -34,7 +34,7 @@ namespace SaleWinApp
         private void btn_Update_Click(object sender, EventArgs e) {
             var _tempProduct = _productRepository.GetProductById(Int32.Parse(dgv_Product.SelectedRows[0].Cells[0].Value.ToString()));
             var frmProductUpdate = new frmProductUpdate(_tempProduct);
-            frmProductUpdate.Show();
+            frmProductUpdate.ShowDialog();
         }
 
         private void btn_Add_Click(object sender, EventArgs e) {

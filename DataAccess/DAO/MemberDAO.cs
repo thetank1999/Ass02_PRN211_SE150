@@ -28,16 +28,16 @@ namespace DataAccess.DAO
             var MemberList = new List<Member>();
             try {
                 using var context = new FStoreDBContext();
-                MemberList = context.Members.Where(x => x.Email.Contains(name, StringComparison.InvariantCultureIgnoreCase)
-                                                        || x.CompanyName.Contains(name, StringComparison.InvariantCultureIgnoreCase)
-                                                        || x.Country.Contains(name, StringComparison.InvariantCultureIgnoreCase)
-                                                        || x.City.Contains(name, StringComparison.InvariantCultureIgnoreCase)).
+                MemberList = context.Members.Where(x => x.Email.Contains(name)).
                                                         ToList(); 
             } catch (Exception ex) {
                 throw new Exception(ex.ToString());
             }
             return MemberList;
         }
+        //|| x.CompanyName.Contains(name, StringComparison.InvariantCultureIgnoreCase)
+        //|| x.Country.Contains(name, StringComparison.InvariantCultureIgnoreCase)
+        //|| x.City.Contains(name, StringComparison.InvariantCultureIgnoreCase)
         #endregion
 
         #region [ Login ]

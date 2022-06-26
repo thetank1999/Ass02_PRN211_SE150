@@ -23,12 +23,25 @@ namespace DataAccess.DAO
         }
         #endregion
 
-        #region [ Get OrderList By MemberId ]
-        public IEnumerable<Order> FilterOrderList(int MemberId) {
+        #region [ Get OrderList By - ]
+        // by member ID
+        public IEnumerable<Order> FilterOrderListByMemberId(int MemberId) {
             var OrderList = new List<Order>();
             try {
                 using var context = new FStoreDBContext();
                 OrderList = context.Orders.Where(x => x.MemberId==MemberId).ToList(); 
+            } catch (Exception ex) {
+                throw new Exception(ex.ToString());
+            }
+            return OrderList;
+        }
+        // by from and to DateTime
+        public IEnumerable<Order> FilterOrderListByDateTime(DateTime _from, DateTime _to) {
+            var OrderList = new List<Order>();
+            try {
+                using var context = new FStoreDBContext();
+                OrderList = context.Orders.Where(x =>  _from <= x.OrderDate && x.OrderDate <= _to).ToList();
+                //OrderList.Sort();
             } catch (Exception ex) {
                 throw new Exception(ex.ToString());
             }

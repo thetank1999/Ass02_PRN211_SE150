@@ -24,11 +24,8 @@ namespace SaleWinApp
         }
 
         private void btn_OrderManagement_Click(object sender, EventArgs e) {
-
-        }
-
-        private void btn_CreateReport_Click(object sender, EventArgs e) {
-
+            frmOrderManagement frmOrderManagement = new frmOrderManagement();
+            frmOrderManagement.Show();
         }
     }
 }

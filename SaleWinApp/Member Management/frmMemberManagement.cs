@@ -24,7 +24,7 @@ namespace SaleWinApp
         private void btn_MemberMana_Update_Click(object sender, EventArgs e) {
             var tempMember = _memberRepository.GetMemberById(Int32.Parse(dgv_Members.SelectedRows[0].Cells[0].Value.ToString()));
             var frmMemberUpdate = new frmMemberUpdate(tempMember);
-            frmMemberUpdate.Show();
+            frmMemberUpdate.ShowDialog();
         }
 
         private void btn_MemberMana_Delete_Click(object sender, EventArgs e) {
@@ -38,13 +38,11 @@ namespace SaleWinApp
             }
         }
 
-        
         private void btn_Reload_Click(object sender, EventArgs e) {
             this.AutoLoadDataInto_DGV();
         }
 
         #region [ DGV - Functions ]
-
         private void dgv_Members_CellClick(object sender, DataGridViewCellEventArgs e) {
             if (dgv_Members.SelectedRows.Count == 1) {
                 btn_MemberMana_Delete.Enabled = true;
