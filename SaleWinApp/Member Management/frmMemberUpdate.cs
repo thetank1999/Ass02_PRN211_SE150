@@ -10,10 +10,18 @@ using System.Windows.Forms;
 
 namespace SaleWinApp
 {
-    public partial class frmMemberManagement : Form
+    public partial class frmMemberUpdate : Form
     {
-        public frmMemberManagement() {
+        public frmMemberUpdate() {
             InitializeComponent();
+        }
+
+        private void btn_Member_Save_Click(object sender, EventArgs e) {
+
+        }
+
+        private void btn_Member_Cancel_Click(object sender, EventArgs e) {
+
         }
     }
 }

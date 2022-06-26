@@ -16,10 +16,20 @@
     <ProjectReference Include="..\BussinessObject\BussinessObject.csproj" />
     <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Member Management\frmMemberCreate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
 	<ItemGroup>
-		<None Update="appsettings.json">
+		<None Update="Login\appsettings.json">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Order Management\" />
+	  <Folder Include="Product Management\" />
 	</ItemGroup>
 
 </Project>

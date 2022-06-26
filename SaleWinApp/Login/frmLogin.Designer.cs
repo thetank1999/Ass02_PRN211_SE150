@@ -68,7 +68,7 @@
             // 
             this.tB_EmailAddress.Location = new System.Drawing.Point(391, 156);
             this.tB_EmailAddress.Name = "tB_EmailAddress";
-            this.tB_EmailAddress.Size = new System.Drawing.Size(184, 31);
+            this.tB_EmailAddress.Size = new System.Drawing.Size(233, 31);
             this.tB_EmailAddress.TabIndex = 3;
             // 
             // tB_Password
@@ -76,7 +76,7 @@
             this.tB_Password.Location = new System.Drawing.Point(391, 216);
             this.tB_Password.Name = "tB_Password";
             this.tB_Password.PasswordChar = '*';
-            this.tB_Password.Size = new System.Drawing.Size(184, 31);
+            this.tB_Password.Size = new System.Drawing.Size(233, 31);
             this.tB_Password.TabIndex = 4;
             // 
             // btn_Login
@@ -104,7 +104,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 412);
             this.Controls.Add(this.btn_Register);
             this.Controls.Add(this.btn_Login);
             this.Controls.Add(this.tB_Password);

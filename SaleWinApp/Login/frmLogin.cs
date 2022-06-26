@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using DataAccess.DAO;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Windows.Forms;
 
@@ -6,6 +7,7 @@ namespace SaleWinApp
 {
     public partial class frmLogin : Form
     {
+        MemberDAO _memberDAO = new MemberDAO();
         public frmLogin() {
             InitializeComponent();
         }
@@ -15,10 +17,17 @@ namespace SaleWinApp
             string AdminEmail = adminDefaultSettings.Email;
             string AdminPassword = adminDefaultSettings.Password;
 
+            var tempMember = _memberDAO.Login(tB_EmailAddress.Text, tB_Password.Text);
+
             if (true) //tB_EmailAddress.Text == AdminEmail && tB_Password.Text == AdminPassword
             {
                 this.Hide();
                 var formManagement = new frmGeneralManagement();
+                formManagement.Show();
+            } else if (tempMember != null)
+                {
+                this.Hide();
+                var formManagement = new frmGeneralManagement(tempMember);
                 formManagement.Show();
             } else {
                 MessageBox.Show("Incorrect Email or Password. Please do it again");

@@ -1,6 +1,6 @@
 ﻿namespace SaleWinApp
 {
-    partial class frmMember
+    partial class frmMemberUpdate
     {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +42,7 @@
             // 
             // tB_Member_Email
             // 
-            this.tB_Member_Email.Location = new System.Drawing.Point(375, 62);
+            this.tB_Member_Email.Location = new System.Drawing.Point(375, 130);
             this.tB_Member_Email.Name = "tB_Member_Email";
             this.tB_Member_Email.Size = new System.Drawing.Size(287, 31);
             this.tB_Member_Email.TabIndex = 0;
@@ -56,6 +56,7 @@
             this.btn_Member_Cancel.TabIndex = 5;
             this.btn_Member_Cancel.Text = "Cancel";
             this.btn_Member_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Member_Cancel.Click += new System.EventHandler(this.btn_Member_Cancel_Click);
             // 
             // btn_Member_Save
             // 
@@ -66,6 +67,7 @@
             this.btn_Member_Save.TabIndex = 6;
             this.btn_Member_Save.Text = "Save";
             this.btn_Member_Save.UseVisualStyleBackColor = true;
+            this.btn_Member_Save.Click += new System.EventHandler(this.btn_Member_Save_Click);
             // 
             // label1
             // 
@@ -80,7 +82,7 @@
             // label_Member_Email
             // 
             this.label_Member_Email.AutoSize = true;
-            this.label_Member_Email.Location = new System.Drawing.Point(210, 68);
+            this.label_Member_Email.Location = new System.Drawing.Point(210, 133);
             this.label_Member_Email.Name = "label_Member_Email";
             this.label_Member_Email.Size = new System.Drawing.Size(130, 25);
             this.label_Member_Email.TabIndex = 8;
@@ -89,7 +91,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(210, 242);
+            this.label3.Location = new System.Drawing.Point(210, 285);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(79, 25);
             this.label3.TabIndex = 9;
@@ -98,7 +100,7 @@
             // label_Member_Company
             // 
             this.label_Member_Company.AutoSize = true;
-            this.label_Member_Company.Location = new System.Drawing.Point(210, 123);
+            this.label_Member_Company.Location = new System.Drawing.Point(207, 190);
             this.label_Member_Company.Name = "label_Member_Company";
             this.label_Member_Company.Size = new System.Drawing.Size(145, 25);
             this.label_Member_Company.TabIndex = 10;
@@ -107,7 +109,7 @@
             // label_Member_City
             // 
             this.label_Member_City.AutoSize = true;
-            this.label_Member_City.Location = new System.Drawing.Point(210, 185);
+            this.label_Member_City.Location = new System.Drawing.Point(210, 238);
             this.label_Member_City.Name = "label_Member_City";
             this.label_Member_City.Size = new System.Drawing.Size(46, 25);
             this.label_Member_City.TabIndex = 11;
@@ -116,7 +118,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(210, 306);
+            this.label6.Location = new System.Drawing.Point(210, 336);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 25);
             this.label6.TabIndex = 12;
@@ -124,28 +126,28 @@
             // 
             // tB_Member_CompanyName
             // 
-            this.tB_Member_CompanyName.Location = new System.Drawing.Point(375, 123);
+            this.tB_Member_CompanyName.Location = new System.Drawing.Point(375, 184);
             this.tB_Member_CompanyName.Name = "tB_Member_CompanyName";
             this.tB_Member_CompanyName.Size = new System.Drawing.Size(287, 31);
             this.tB_Member_CompanyName.TabIndex = 13;
             // 
             // tB_Member_City
             // 
-            this.tB_Member_City.Location = new System.Drawing.Point(375, 185);
+            this.tB_Member_City.Location = new System.Drawing.Point(375, 232);
             this.tB_Member_City.Name = "tB_Member_City";
             this.tB_Member_City.Size = new System.Drawing.Size(287, 31);
             this.tB_Member_City.TabIndex = 14;
             // 
             // tB_Member_Country
             // 
-            this.tB_Member_Country.Location = new System.Drawing.Point(375, 242);
+            this.tB_Member_Country.Location = new System.Drawing.Point(375, 279);
             this.tB_Member_Country.Name = "tB_Member_Country";
             this.tB_Member_Country.Size = new System.Drawing.Size(287, 31);
             this.tB_Member_Country.TabIndex = 15;
             // 
             // tB_Member_Password
             // 
-            this.tB_Member_Password.Location = new System.Drawing.Point(375, 300);
+            this.tB_Member_Password.Location = new System.Drawing.Point(375, 330);
             this.tB_Member_Password.Name = "tB_Member_Password";
             this.tB_Member_Password.Size = new System.Drawing.Size(287, 31);
             this.tB_Member_Password.TabIndex = 16;
