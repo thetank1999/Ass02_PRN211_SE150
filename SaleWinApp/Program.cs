@@ -9,7 +9,7 @@ namespace SaleWinApp
 {
     internal static class Program
     {
-        public static IConfiguration Configuration { get; private set; }
+        public static IConfigurationRoot Configuration { get; private set; }
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

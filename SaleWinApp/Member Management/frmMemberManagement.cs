@@ -1,5 +1,6 @@
 ﻿using BussinessObject.Models;
 using DataAccess.DAO;
+using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -8,31 +9,51 @@ namespace SaleWinApp
 {
     public partial class frmMemberManagement : Form
     {
-        MemberDAO _memberDAO = new MemberDAO();
+        MemberRepository _memberRepository = new MemberRepository();
         IEnumerable<Member> _memberList = new List<Member>();
         public frmMemberManagement() {
             InitializeComponent();
         }
 
         private void btn_MemberMana_Add_Click(object sender, EventArgs e) {
-                
+            var frmMemberCreate= new frmMemberCreate();
+            frmMemberCreate.Show();
         }
 
         private void btn_MemberMana_Update_Click(object sender, EventArgs e) {
-
+            var tempMember = _memberRepository.GetMemberById(Int32.Parse(dgv_Members.SelectedRows[0].Cells[0].Value.ToString()));
+            var frmMemberUpdate = new frmMemberUpdate(tempMember);
+            frmMemberUpdate.Show();
         }
 
         private void btn_MemberMana_Delete_Click(object sender, EventArgs e) {
-
+            DialogResult _dialogResult;
+            _dialogResult = MessageBox.Show("Do you really want to delete chosen Member?", "Management", (MessageBoxButtons)MessageBoxDefaultButton.Button1);
+            if (_dialogResult == DialogResult.OK) {
+                var temp = _memberRepository.GetMemberById(Int32.Parse(dgv_Members.SelectedRows[0].Cells[0].Value.ToString()));
+                _memberRepository.RemoveMember(temp);
+                this.AutoLoadDataInto_DGV();
+                MessageBox.Show("Deleted the chosen member.");
+            }
         }
 
+        
         private void btn_Reload_Click(object sender, EventArgs e) {
             this.AutoLoadDataInto_DGV();
         }
 
         #region [ DGV - Functions ]
+
+        private void dgv_Members_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if (dgv_Members.Rows.Count == 1) {
+                btn_MemberMana_Delete.Enabled = true;
+            }else {
+
+            }
+        }
+
         public void AutoLoadDataInto_DGV() {
-            _memberList = _memberDAO.GetMemberList();
+            _memberList = _memberRepository.GetMemberList();
             this.LoadDataInto_DGV(_memberList);
         }
 
@@ -42,6 +63,7 @@ namespace SaleWinApp
                 dgv_Members.Rows.Add(member.MemberId, member.Email, member.CompanyName, member.City,member.Country);
             }
         }
+
         #endregion
 
         

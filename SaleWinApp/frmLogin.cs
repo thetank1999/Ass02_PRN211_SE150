@@ -1,4 +1,4 @@
-﻿using DataAccess.DAO;
+﻿using DataAccess.Repository;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Windows.Forms;
@@ -7,7 +7,7 @@ namespace SaleWinApp
 {
     public partial class frmLogin : Form
     {
-        MemberDAO _memberDAO = new MemberDAO();
+        MemberRepository _memberDAO = new MemberRepository();
         public frmLogin() {
             InitializeComponent();
         }

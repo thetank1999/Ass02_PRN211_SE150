@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BussinessObject.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,7 @@ namespace SaleWinApp
 {
     public partial class frmMemberUpdate : Form
     {
-        public frmMemberUpdate() {
+        public frmMemberUpdate(Member member) {
             InitializeComponent();
         }
 
