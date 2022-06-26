@@ -38,6 +38,8 @@
             this.tB_Member_City = new System.Windows.Forms.TextBox();
             this.tB_Member_Country = new System.Windows.Forms.TextBox();
             this.tB_Member_Password = new System.Windows.Forms.TextBox();
+            this.label_Member_Id = new System.Windows.Forms.Label();
+            this.mTB_Member_Id = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // tB_Member_Email
@@ -56,6 +58,7 @@
             this.btn_Member_Cancel.TabIndex = 5;
             this.btn_Member_Cancel.Text = "Cancel";
             this.btn_Member_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Member_Cancel.Click += new System.EventHandler(this.btn_Member_Cancel_Click);
             // 
             // btn_Member_Save
             // 
@@ -66,6 +69,7 @@
             this.btn_Member_Save.TabIndex = 6;
             this.btn_Member_Save.Text = "Save";
             this.btn_Member_Save.UseVisualStyleBackColor = true;
+            this.btn_Member_Save.Click += new System.EventHandler(this.btn_Member_Save_Click);
             // 
             // label1
             // 
@@ -150,11 +154,31 @@
             this.tB_Member_Password.Size = new System.Drawing.Size(287, 31);
             this.tB_Member_Password.TabIndex = 16;
             // 
+            // label_Member_Id
+            // 
+            this.label_Member_Id.AutoSize = true;
+            this.label_Member_Id.Location = new System.Drawing.Point(210, 87);
+            this.label_Member_Id.Name = "label_Member_Id";
+            this.label_Member_Id.Size = new System.Drawing.Size(104, 25);
+            this.label_Member_Id.TabIndex = 18;
+            this.label_Member_Id.Text = "Member Id:";
+            // 
+            // mTB_Member_Id
+            // 
+            this.mTB_Member_Id.Location = new System.Drawing.Point(375, 84);
+            this.mTB_Member_Id.Mask = "00000";
+            this.mTB_Member_Id.Name = "mTB_Member_Id";
+            this.mTB_Member_Id.Size = new System.Drawing.Size(287, 31);
+            this.mTB_Member_Id.TabIndex = 19;
+            this.mTB_Member_Id.ValidatingType = typeof(int);
+            // 
             // frmMemberCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mTB_Member_Id);
+            this.Controls.Add(this.label_Member_Id);
             this.Controls.Add(this.tB_Member_Password);
             this.Controls.Add(this.tB_Member_Country);
             this.Controls.Add(this.tB_Member_City);
@@ -190,5 +214,7 @@
         private System.Windows.Forms.TextBox tB_Member_City;
         private System.Windows.Forms.TextBox tB_Member_Country;
         private System.Windows.Forms.TextBox tB_Member_Password;
+        private System.Windows.Forms.Label label_Member_Id;
+        private System.Windows.Forms.MaskedTextBox mTB_Member_Id;
     }
 }

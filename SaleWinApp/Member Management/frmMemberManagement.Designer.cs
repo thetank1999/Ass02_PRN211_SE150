@@ -124,6 +124,7 @@
             // 
             // btn_MemberMana_Update
             // 
+            this.btn_MemberMana_Update.Enabled = false;
             this.btn_MemberMana_Update.Location = new System.Drawing.Point(321, 61);
             this.btn_MemberMana_Update.Name = "btn_MemberMana_Update";
             this.btn_MemberMana_Update.Size = new System.Drawing.Size(167, 34);

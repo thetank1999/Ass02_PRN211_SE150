@@ -71,7 +71,7 @@ namespace DataAccess.DAO
                     context.Products.Add(_Product);
                     context.SaveChanges();
                 } else {
-                    throw new Exception("The Product Id is already existed.");
+                    throw new Exception();
                 }
             } catch (Exception ex) {
                 throw new Exception(ex.ToString());

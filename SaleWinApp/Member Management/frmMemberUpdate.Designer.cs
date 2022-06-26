@@ -38,6 +38,8 @@
             this.tB_Member_City = new System.Windows.Forms.TextBox();
             this.tB_Member_Country = new System.Windows.Forms.TextBox();
             this.tB_Member_Password = new System.Windows.Forms.TextBox();
+            this.label_Member_Id = new System.Windows.Forms.Label();
+            this.mTB_Member_Id = new System.Windows.Forms.MaskedTextBox();
             this.SuspendLayout();
             // 
             // tB_Member_Email
@@ -73,11 +75,11 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(268, 9);
+            this.label1.Location = new System.Drawing.Point(290, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(253, 36);
+            this.label1.Size = new System.Drawing.Size(214, 36);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Add a new member";
+            this.label1.Text = "Update Member";
             // 
             // label_Member_Email
             // 
@@ -152,11 +154,32 @@
             this.tB_Member_Password.Size = new System.Drawing.Size(287, 31);
             this.tB_Member_Password.TabIndex = 16;
             // 
-            // frmMember
+            // label_Member_Id
+            // 
+            this.label_Member_Id.AutoSize = true;
+            this.label_Member_Id.Location = new System.Drawing.Point(210, 87);
+            this.label_Member_Id.Name = "label_Member_Id";
+            this.label_Member_Id.Size = new System.Drawing.Size(104, 25);
+            this.label_Member_Id.TabIndex = 18;
+            this.label_Member_Id.Text = "Member Id:";
+            // 
+            // mTB_Member_Id
+            // 
+            this.mTB_Member_Id.Enabled = false;
+            this.mTB_Member_Id.Location = new System.Drawing.Point(375, 84);
+            this.mTB_Member_Id.Mask = "00000";
+            this.mTB_Member_Id.Name = "mTB_Member_Id";
+            this.mTB_Member_Id.Size = new System.Drawing.Size(287, 31);
+            this.mTB_Member_Id.TabIndex = 19;
+            this.mTB_Member_Id.ValidatingType = typeof(int);
+            // 
+            // frmMemberUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.mTB_Member_Id);
+            this.Controls.Add(this.label_Member_Id);
             this.Controls.Add(this.tB_Member_Password);
             this.Controls.Add(this.tB_Member_Country);
             this.Controls.Add(this.tB_Member_City);
@@ -170,8 +193,8 @@
             this.Controls.Add(this.btn_Member_Save);
             this.Controls.Add(this.btn_Member_Cancel);
             this.Controls.Add(this.tB_Member_Email);
-            this.Name = "frmMember";
-            this.Text = "Member";
+            this.Name = "frmMemberUpdate";
+            this.Text = "Update Member";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,5 +215,7 @@
         private System.Windows.Forms.TextBox tB_Member_City;
         private System.Windows.Forms.TextBox tB_Member_Country;
         private System.Windows.Forms.TextBox tB_Member_Password;
+        private System.Windows.Forms.Label label_Member_Id;
+        private System.Windows.Forms.MaskedTextBox mTB_Member_Id;
     }
 }

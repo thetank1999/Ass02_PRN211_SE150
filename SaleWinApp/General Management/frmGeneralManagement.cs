@@ -19,7 +19,8 @@ namespace SaleWinApp
         }
 
         private void btn_ProductManagement_Click(object sender, EventArgs e) {
-
+            frmProductManagement frmProductManagement = new frmProductManagement();
+            frmProductManagement.Show();
         }
 
         private void btn_OrderManagement_Click(object sender, EventArgs e) {

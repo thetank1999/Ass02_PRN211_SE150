@@ -13,17 +13,18 @@ namespace SaleWinApp
         IEnumerable<Member> _memberList = new List<Member>();
         public frmMemberManagement() {
             InitializeComponent();
+            this.AutoLoadDataInto_DGV();
         }
 
         private void btn_MemberMana_Add_Click(object sender, EventArgs e) {
             var frmMemberCreate= new frmMemberCreate();
-            frmMemberCreate.Show();
+            frmMemberCreate.ShowDialog();
         }
 
         private void btn_MemberMana_Update_Click(object sender, EventArgs e) {
             var tempMember = _memberRepository.GetMemberById(Int32.Parse(dgv_Members.SelectedRows[0].Cells[0].Value.ToString()));
             var frmMemberUpdate = new frmMemberUpdate(tempMember);
-            frmMemberUpdate.Show();
+            frmMemberUpdate.ShowDialog();
         }
 
         private void btn_MemberMana_Delete_Click(object sender, EventArgs e) {
@@ -45,10 +46,12 @@ namespace SaleWinApp
         #region [ DGV - Functions ]
 
         private void dgv_Members_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if (dgv_Members.Rows.Count == 1) {
+            if (dgv_Members.SelectedRows.Count == 1) {
                 btn_MemberMana_Delete.Enabled = true;
+                btn_MemberMana_Update.Enabled = true;
             }else {
-
+                btn_MemberMana_Delete.Enabled = false;
+                btn_MemberMana_Update.Enabled=false;
             }
         }
 

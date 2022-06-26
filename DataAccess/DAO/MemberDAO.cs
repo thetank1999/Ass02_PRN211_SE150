@@ -97,7 +97,7 @@ namespace DataAccess.DAO
                     context.Members.Add(_Member);
                     context.SaveChanges();
                 } else {
-                    throw new Exception("The Member Id is already existed.");
+                    throw new Exception();
                 }
             } catch (Exception ex) {
                 throw new Exception(ex.ToString());
