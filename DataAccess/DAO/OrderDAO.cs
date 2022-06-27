@@ -40,8 +40,7 @@ namespace DataAccess.DAO
             var OrderList = new List<Order>();
             try {
                 using var context = new FStoreDBContext();
-                OrderList = context.Orders.Where(x =>  _from <= x.OrderDate && x.OrderDate <= _to).ToList();
-                //OrderList.Sort();
+                OrderList = context.Orders.Where(x =>  _from <= x.OrderDate && x.OrderDate <= _to).ToList().OrderByDescending(x => x.Freight).ToList();
             } catch (Exception ex) {
                 throw new Exception(ex.ToString());
             }
@@ -82,7 +81,7 @@ namespace DataAccess.DAO
                     context.Orders.Add(_Order);
                     context.SaveChanges();
                 } else {
-                    throw new Exception("The Order Id is already existed.");
+                    throw new Exception();
                 }
             } catch (Exception ex) {
                 throw new Exception(ex.ToString());

@@ -40,13 +40,30 @@
             this.dTP_ShippedDate = new System.Windows.Forms.DateTimePicker();
             this.mTB_Freight = new System.Windows.Forms.MaskedTextBox();
             this.dTP_OrderDate = new System.Windows.Forms.DateTimePicker();
+            this.dgv_OrderDetails = new System.Windows.Forms.DataGridView();
+            this.ProductId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UnitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_AddOrderDetail = new System.Windows.Forms.Button();
+            this.label_Product = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cb_Product = new System.Windows.Forms.ComboBox();
+            this.tb_UnitPrice = new System.Windows.Forms.TextBox();
+            this.mtb_Quantity = new System.Windows.Forms.MaskedTextBox();
+            this.mtb_Discount = new System.Windows.Forms.MaskedTextBox();
+            this.btn_DeleteOrderDetail = new System.Windows.Forms.Button();
+            this.btn_CancelOrderDetail = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_OrderDetails)).BeginInit();
             this.SuspendLayout();
             // 
             // label_Title
             // 
             this.label_Title.AutoSize = true;
             this.label_Title.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label_Title.Location = new System.Drawing.Point(265, 9);
+            this.label_Title.Location = new System.Drawing.Point(360, 9);
             this.label_Title.Name = "label_Title";
             this.label_Title.Size = new System.Drawing.Size(249, 36);
             this.label_Title.TabIndex = 0;
@@ -55,7 +72,7 @@
             // label_OrderId
             // 
             this.label_OrderId.AutoSize = true;
-            this.label_OrderId.Location = new System.Drawing.Point(209, 103);
+            this.label_OrderId.Location = new System.Drawing.Point(12, 58);
             this.label_OrderId.Name = "label_OrderId";
             this.label_OrderId.Size = new System.Drawing.Size(83, 25);
             this.label_OrderId.TabIndex = 1;
@@ -64,7 +81,7 @@
             // label_Member
             // 
             this.label_Member.AutoSize = true;
-            this.label_Member.Location = new System.Drawing.Point(209, 152);
+            this.label_Member.Location = new System.Drawing.Point(12, 103);
             this.label_Member.Name = "label_Member";
             this.label_Member.Size = new System.Drawing.Size(83, 25);
             this.label_Member.TabIndex = 2;
@@ -73,7 +90,7 @@
             // label_OrderDate
             // 
             this.label_OrderDate.AutoSize = true;
-            this.label_OrderDate.Location = new System.Drawing.Point(205, 211);
+            this.label_OrderDate.Location = new System.Drawing.Point(12, 140);
             this.label_OrderDate.Name = "label_OrderDate";
             this.label_OrderDate.Size = new System.Drawing.Size(104, 25);
             this.label_OrderDate.TabIndex = 3;
@@ -82,7 +99,7 @@
             // label_RequiredDate
             // 
             this.label_RequiredDate.AutoSize = true;
-            this.label_RequiredDate.Location = new System.Drawing.Point(205, 264);
+            this.label_RequiredDate.Location = new System.Drawing.Point(8, 177);
             this.label_RequiredDate.Name = "label_RequiredDate";
             this.label_RequiredDate.Size = new System.Drawing.Size(128, 25);
             this.label_RequiredDate.TabIndex = 4;
@@ -91,7 +108,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(209, 319);
+            this.label6.Location = new System.Drawing.Point(12, 214);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(124, 25);
             this.label6.TabIndex = 5;
@@ -100,7 +117,7 @@
             // label_Freight
             // 
             this.label_Freight.AutoSize = true;
-            this.label_Freight.Location = new System.Drawing.Point(250, 362);
+            this.label_Freight.Location = new System.Drawing.Point(12, 251);
             this.label_Freight.Name = "label_Freight";
             this.label_Freight.Size = new System.Drawing.Size(71, 25);
             this.label_Freight.TabIndex = 6;
@@ -108,7 +125,7 @@
             // 
             // btn_Cancel
             // 
-            this.btn_Cancel.Location = new System.Drawing.Point(265, 421);
+            this.btn_Cancel.Location = new System.Drawing.Point(335, 581);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(112, 34);
             this.btn_Cancel.TabIndex = 7;
@@ -118,7 +135,7 @@
             // 
             // btn_Save
             // 
-            this.btn_Save.Location = new System.Drawing.Point(429, 421);
+            this.btn_Save.Location = new System.Drawing.Point(532, 581);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(112, 34);
             this.btn_Save.TabIndex = 8;
@@ -128,7 +145,7 @@
             // 
             // mTB_OrderId
             // 
-            this.mTB_OrderId.Location = new System.Drawing.Point(397, 103);
+            this.mTB_OrderId.Location = new System.Drawing.Point(147, 58);
             this.mTB_OrderId.Mask = "00000";
             this.mTB_OrderId.Name = "mTB_OrderId";
             this.mTB_OrderId.Size = new System.Drawing.Size(182, 31);
@@ -138,7 +155,7 @@
             // cB_Member
             // 
             this.cB_Member.FormattingEnabled = true;
-            this.cB_Member.Location = new System.Drawing.Point(360, 152);
+            this.cB_Member.Location = new System.Drawing.Point(147, 95);
             this.cB_Member.Name = "cB_Member";
             this.cB_Member.Size = new System.Drawing.Size(300, 33);
             this.cB_Member.TabIndex = 10;
@@ -146,21 +163,21 @@
             // 
             // dTP_RequiredDate
             // 
-            this.dTP_RequiredDate.Location = new System.Drawing.Point(360, 264);
+            this.dTP_RequiredDate.Location = new System.Drawing.Point(147, 171);
             this.dTP_RequiredDate.Name = "dTP_RequiredDate";
             this.dTP_RequiredDate.Size = new System.Drawing.Size(300, 31);
             this.dTP_RequiredDate.TabIndex = 11;
             // 
             // dTP_ShippedDate
             // 
-            this.dTP_ShippedDate.Location = new System.Drawing.Point(360, 319);
+            this.dTP_ShippedDate.Location = new System.Drawing.Point(147, 208);
             this.dTP_ShippedDate.Name = "dTP_ShippedDate";
             this.dTP_ShippedDate.Size = new System.Drawing.Size(300, 31);
             this.dTP_ShippedDate.TabIndex = 12;
             // 
             // mTB_Freight
             // 
-            this.mTB_Freight.Location = new System.Drawing.Point(397, 362);
+            this.mTB_Freight.Location = new System.Drawing.Point(147, 245);
             this.mTB_Freight.Mask = "0000000000";
             this.mTB_Freight.Name = "mTB_Freight";
             this.mTB_Freight.Size = new System.Drawing.Size(182, 31);
@@ -170,16 +187,178 @@
             // dTP_OrderDate
             // 
             this.dTP_OrderDate.Enabled = false;
-            this.dTP_OrderDate.Location = new System.Drawing.Point(360, 211);
+            this.dTP_OrderDate.Location = new System.Drawing.Point(147, 134);
             this.dTP_OrderDate.Name = "dTP_OrderDate";
             this.dTP_OrderDate.Size = new System.Drawing.Size(300, 31);
             this.dTP_OrderDate.TabIndex = 14;
+            // 
+            // dgv_OrderDetails
+            // 
+            this.dgv_OrderDetails.AllowUserToAddRows = false;
+            this.dgv_OrderDetails.AllowUserToDeleteRows = false;
+            this.dgv_OrderDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_OrderDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ProductId,
+            this.UnitPrice,
+            this.Quantity,
+            this.Discount});
+            this.dgv_OrderDetails.Location = new System.Drawing.Point(147, 282);
+            this.dgv_OrderDetails.Name = "dgv_OrderDetails";
+            this.dgv_OrderDetails.ReadOnly = true;
+            this.dgv_OrderDetails.RowHeadersWidth = 62;
+            this.dgv_OrderDetails.RowTemplate.Height = 33;
+            this.dgv_OrderDetails.Size = new System.Drawing.Size(776, 291);
+            this.dgv_OrderDetails.TabIndex = 15;
+            // 
+            // ProductId
+            // 
+            this.ProductId.HeaderText = "Product";
+            this.ProductId.MinimumWidth = 8;
+            this.ProductId.Name = "ProductId";
+            this.ProductId.ReadOnly = true;
+            this.ProductId.Width = 150;
+            // 
+            // UnitPrice
+            // 
+            this.UnitPrice.HeaderText = "Unit Price";
+            this.UnitPrice.MinimumWidth = 8;
+            this.UnitPrice.Name = "UnitPrice";
+            this.UnitPrice.ReadOnly = true;
+            this.UnitPrice.Width = 150;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 8;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.ReadOnly = true;
+            this.Quantity.Width = 150;
+            // 
+            // Discount
+            // 
+            this.Discount.HeaderText = "Discount (%)";
+            this.Discount.MinimumWidth = 8;
+            this.Discount.Name = "Discount";
+            this.Discount.ReadOnly = true;
+            this.Discount.Width = 150;
+            // 
+            // btn_AddOrderDetail
+            // 
+            this.btn_AddOrderDetail.Location = new System.Drawing.Point(929, 282);
+            this.btn_AddOrderDetail.Name = "btn_AddOrderDetail";
+            this.btn_AddOrderDetail.Size = new System.Drawing.Size(149, 84);
+            this.btn_AddOrderDetail.TabIndex = 16;
+            this.btn_AddOrderDetail.Text = "Add an \r\nOrder Detail";
+            this.btn_AddOrderDetail.UseVisualStyleBackColor = true;
+            this.btn_AddOrderDetail.Click += new System.EventHandler(this.btn_AddOrderDetail_Click);
+            // 
+            // label_Product
+            // 
+            this.label_Product.AutoSize = true;
+            this.label_Product.Location = new System.Drawing.Point(661, 93);
+            this.label_Product.Name = "label_Product";
+            this.label_Product.Size = new System.Drawing.Size(78, 25);
+            this.label_Product.TabIndex = 18;
+            this.label_Product.Text = "Product:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(661, 130);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(90, 25);
+            this.label1.TabIndex = 19;
+            this.label1.Text = "Unit Price:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(661, 167);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(84, 25);
+            this.label2.TabIndex = 20;
+            this.label2.Text = "Quantity:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(661, 201);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(116, 25);
+            this.label3.TabIndex = 21;
+            this.label3.Text = "Discount (%):";
+            // 
+            // cb_Product
+            // 
+            this.cb_Product.FormattingEnabled = true;
+            this.cb_Product.Location = new System.Drawing.Point(823, 85);
+            this.cb_Product.Name = "cb_Product";
+            this.cb_Product.Size = new System.Drawing.Size(182, 33);
+            this.cb_Product.TabIndex = 22;
+            this.cb_Product.SelectedIndexChanged += new System.EventHandler(this.cb_Product_SelectedIndexChanged);
+            // 
+            // tb_UnitPrice
+            // 
+            this.tb_UnitPrice.Enabled = false;
+            this.tb_UnitPrice.Location = new System.Drawing.Point(823, 124);
+            this.tb_UnitPrice.Name = "tb_UnitPrice";
+            this.tb_UnitPrice.Size = new System.Drawing.Size(182, 31);
+            this.tb_UnitPrice.TabIndex = 23;
+            // 
+            // mtb_Quantity
+            // 
+            this.mtb_Quantity.Location = new System.Drawing.Point(823, 161);
+            this.mtb_Quantity.Mask = "0000";
+            this.mtb_Quantity.Name = "mtb_Quantity";
+            this.mtb_Quantity.Size = new System.Drawing.Size(182, 31);
+            this.mtb_Quantity.TabIndex = 24;
+            // 
+            // mtb_Discount
+            // 
+            this.mtb_Discount.Location = new System.Drawing.Point(823, 198);
+            this.mtb_Discount.Mask = "00";
+            this.mtb_Discount.Name = "mtb_Discount";
+            this.mtb_Discount.Size = new System.Drawing.Size(182, 31);
+            this.mtb_Discount.TabIndex = 25;
+            // 
+            // btn_DeleteOrderDetail
+            // 
+            this.btn_DeleteOrderDetail.Location = new System.Drawing.Point(929, 494);
+            this.btn_DeleteOrderDetail.Name = "btn_DeleteOrderDetail";
+            this.btn_DeleteOrderDetail.Size = new System.Drawing.Size(149, 79);
+            this.btn_DeleteOrderDetail.TabIndex = 26;
+            this.btn_DeleteOrderDetail.Text = "Delete \r\nOrder Detail";
+            this.btn_DeleteOrderDetail.UseVisualStyleBackColor = true;
+            this.btn_DeleteOrderDetail.Click += new System.EventHandler(this.btn_DeleteOrderDetail_Click);
+            // 
+            // btn_CancelOrderDetail
+            // 
+            this.btn_CancelOrderDetail.Enabled = false;
+            this.btn_CancelOrderDetail.Location = new System.Drawing.Point(929, 372);
+            this.btn_CancelOrderDetail.Name = "btn_CancelOrderDetail";
+            this.btn_CancelOrderDetail.Size = new System.Drawing.Size(149, 66);
+            this.btn_CancelOrderDetail.TabIndex = 27;
+            this.btn_CancelOrderDetail.Text = "Cancel \r\nOrder Detail";
+            this.btn_CancelOrderDetail.UseVisualStyleBackColor = true;
+            this.btn_CancelOrderDetail.Click += new System.EventHandler(this.btn_CancelOrderDetail_Click);
             // 
             // frmOrderCreate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 492);
+            this.ClientSize = new System.Drawing.Size(1090, 628);
+            this.Controls.Add(this.btn_CancelOrderDetail);
+            this.Controls.Add(this.btn_DeleteOrderDetail);
+            this.Controls.Add(this.mtb_Discount);
+            this.Controls.Add(this.mtb_Quantity);
+            this.Controls.Add(this.tb_UnitPrice);
+            this.Controls.Add(this.cb_Product);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.label_Product);
+            this.Controls.Add(this.btn_AddOrderDetail);
+            this.Controls.Add(this.dgv_OrderDetails);
             this.Controls.Add(this.dTP_OrderDate);
             this.Controls.Add(this.mTB_Freight);
             this.Controls.Add(this.dTP_ShippedDate);
@@ -197,6 +376,7 @@
             this.Controls.Add(this.label_Title);
             this.Name = "frmOrderCreate";
             this.Text = "Create an Order";
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_OrderDetails)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,5 +399,21 @@
         private System.Windows.Forms.DateTimePicker dTP_ShippedDate;
         private System.Windows.Forms.MaskedTextBox mTB_Freight;
         private System.Windows.Forms.DateTimePicker dTP_OrderDate;
+        private System.Windows.Forms.DataGridView dgv_OrderDetails;
+        private System.Windows.Forms.Button btn_AddOrderDetail;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ProductId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn UnitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
+        private System.Windows.Forms.Label label_Product;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cb_Product;
+        private System.Windows.Forms.TextBox tb_UnitPrice;
+        private System.Windows.Forms.MaskedTextBox mtb_Quantity;
+        private System.Windows.Forms.MaskedTextBox mtb_Discount;
+        private System.Windows.Forms.Button btn_DeleteOrderDetail;
+        private System.Windows.Forms.Button btn_CancelOrderDetail;
     }
 }
