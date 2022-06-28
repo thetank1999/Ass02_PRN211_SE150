@@ -2,12 +2,6 @@
 using DataAccess.Repository;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace SaleWinApp
@@ -20,6 +14,8 @@ namespace SaleWinApp
         public frmOrderManagement() {
             InitializeComponent();
             this.AutoLoadDataInto_DGV();
+            dTP_FromDate.Value= DateTime.Now;
+            dTP_ToDate.Value= DateTime.Now;
         }
 
         private void btn_ReloadData_Click(object sender, EventArgs e) {

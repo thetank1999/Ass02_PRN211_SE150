@@ -30,7 +30,7 @@ namespace SaleWinApp
                 || tB_Member_Password.Text.ToString().Equals("")) {
                 MessageBox.Show("Invalid Input.");
             } else if ( _tempMemberEmail == null || _tempMemberEmail.MemberId == _tempMemberId.MemberId ) {
-                var _tempMember = new Member();
+                var _tempMember = _memberRepository.GetMemberById(Int32.Parse(mTB_Member_Id.Text.ToString()));
                 _tempMember.Email = tB_Member_Email.Text;
                 _tempMember.CompanyName = tB_Member_CompanyName.Text;
                 _tempMember.City = tB_Member_City.Text;

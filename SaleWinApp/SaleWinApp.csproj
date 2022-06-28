@@ -36,8 +36,5 @@
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Personal Management\" />
-	</ItemGroup>
 
 </Project>

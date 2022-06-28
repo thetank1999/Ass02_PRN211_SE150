@@ -19,15 +19,15 @@ namespace SaleWinApp
 
             var tempMember = _memberDAO.Login(tB_EmailAddress.Text, tB_Password.Text);
 
-            if (true) //tB_EmailAddress.Text == AdminEmail && tB_Password.Text == AdminPassword
+            if (tB_EmailAddress.Text == AdminEmail && tB_Password.Text == AdminPassword) //tB_EmailAddress.Text == AdminEmail && tB_Password.Text == AdminPassword
             {
                 this.Hide();
                 var formManagement = new frmGeneralManagement();
                 formManagement.Show();
-            } else if (tempMember != null)
+            } else if (tempMember != null) //tempMember != null
                 {
                 this.Hide();
-                var formManagement = new frmGeneralManagement(tempMember);
+                var formManagement = new frmPersonalManagement(tempMember);
                 formManagement.Show();
             } else {
                 MessageBox.Show("Incorrect Email or Password. Please do it again");

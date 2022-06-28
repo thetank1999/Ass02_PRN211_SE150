@@ -82,10 +82,13 @@ namespace SaleWinApp
         }
 
         private void btn_Save_Click(object sender, EventArgs e) {
-            if (    cB_Member.SelectedIndex < 0
-                ||  mTB_Freight.Text.Equals("")) {
+            if (cB_Member.SelectedIndex < 0
+                || mTB_Freight.Text.Equals("")) {
                 MessageBox.Show("Invalid Input.");
-            }else {
+            } else if (_orderDetailList_New.Count <1) {
+                MessageBox.Show("Order Detail List must not be empty.");
+            }else{
+                // save Order first
                 var _tempOrder = _orderRepository.GetOrderById(Int32.Parse(mTB_OrderId.Text.ToString()));
                 var _tempMember = (Member)cB_Member.SelectedItem;
                 _tempOrder.MemberId = _tempMember.MemberId;
@@ -94,6 +97,12 @@ namespace SaleWinApp
                 _tempOrder.ShippedDate = DateTime.Parse(dTP_ShippedDate.Value.ToString());
                 _tempOrder.Freight = decimal.Parse(mTB_Freight.Text);
                 _orderRepository.UpdateOrder(_tempOrder);
+
+                // save Order Detail List
+                var _tempOrderDetailList = _orderDetailList_New.Except(_orderDetailList_Old);
+                foreach (var _tempOrderDetail in _tempOrderDetailList) {
+                    _orderDetailRepository.AddOrderDetail(_tempOrderDetail);
+                }
                 this.Close();
                 MessageBox.Show("Updated successfully.");
             }
