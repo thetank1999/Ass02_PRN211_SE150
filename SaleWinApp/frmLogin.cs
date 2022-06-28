@@ -35,5 +35,10 @@ namespace SaleWinApp
                 tB_Password.Clear();
             }
         }
+
+        private void btn_Register_Click(object sender, EventArgs e) {
+            frmMemberCreate frmMemberCreate = new frmMemberCreate();
+            frmMemberCreate.ShowDialog();
+        }
     }
 }
