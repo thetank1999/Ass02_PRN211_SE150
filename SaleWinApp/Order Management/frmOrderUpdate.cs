@@ -13,14 +13,72 @@ using System.Windows.Forms;
 namespace SaleWinApp
 {
     public partial class frmOrderUpdate : Form
-    {
+    {   ProductRepository _productRepository = new ProductRepository();
+        IEnumerable<Product> _productList = new List<Product>();
+        OrderDetailRepository _orderDetailRepository = new OrderDetailRepository();
+        List<OrderDetail> _orderDetailList_New = new List<OrderDetail>();
+        IEnumerable<OrderDetail> _orderDetailList_Old = new List<OrderDetail>();
         MemberRepository _memberRepository = new MemberRepository();
         IEnumerable<Member> _memberList= new List<Member>();
         OrderRepository _orderRepository = new OrderRepository();
         public frmOrderUpdate(Order _order) {
             InitializeComponent();
-            this.AutoLoadDataInto_CB();
+            this.AutoLoadDataInto_CB_Member();
             this.LoadDataInto_Inputs(_order);
+            this.AutoLoadDataInto_CB_Product();
+            this.frmOrderUpdate_Load();
+            this.AutoLoadDataInto_DGV_Product();
+            this.Disable_Inputs_OrderDetail();
+        }
+        private void btn_AddOrderDetail_Click(object sender, EventArgs e) {
+            if (btn_AddOrderDetail.Text.Contains("Add")) {
+                this.Enable_Inputs_OrderDetail();
+                btn_CancelOrderDetail.Enabled = true;
+                btn_AddOrderDetail.Text = "Save Order Detail";
+            } else {
+                if (cb_Product.SelectedIndex < 0
+                    || mtb_Quantity.Text.Equals("")) {
+                    MessageBox.Show("Invalud Input.");
+                } else {
+
+                    var _tempOrderDetail = new OrderDetail();
+                    var _tempProduct = (Product)cb_Product.SelectedItem;
+                    _tempOrderDetail.ProductId = _tempProduct.ProductId;
+                    _tempOrderDetail.OrderId = Int32.Parse(mTB_OrderId.Text.Trim().ToString());
+                    _tempOrderDetail.UnitPrice = _tempProduct.UnitPrice;
+                    _tempOrderDetail.Quantity = Int32.Parse(mtb_Quantity.Text.Trim());
+                    if (mtb_Discount.Text.Equals("")) {
+                        _tempOrderDetail.Discount = (double)0;
+                    } else {
+                        _tempOrderDetail.Discount = double.Parse(mtb_Discount.Text.Trim());
+                    }
+                    btn_CancelOrderDetail.Enabled = false;
+                    this.Add_DGV_OrderDetailRow(_tempOrderDetail);
+                    btn_AddOrderDetail.Text = "Add an Order Detail";
+                    this.Disable_Inputs_OrderDetail();
+                    this.Clear_Inputs_OrderDetail();
+                    
+                }
+            }
+        }
+
+        private void btn_CancelOrderDetail_Click(object sender, EventArgs e) {
+            this.Clear_Inputs_OrderDetail();
+            this.Disable_Inputs_OrderDetail();
+            btn_CancelOrderDetail.Enabled = false;
+            btn_AddOrderDetail.Text = "Add an Order Detail";
+        }
+
+        private void btn_DeleteOrderDetail_Click(object sender, EventArgs e) {
+            DialogResult _dialogResult;
+            _dialogResult = MessageBox.Show("Do you really want to delete chosen Order Detail?", "Management", (MessageBoxButtons)MessageBoxDefaultButton.Button1);
+            if (_dialogResult == DialogResult.OK) {
+                foreach (var item in dgv_OrderDetails.SelectedRows) {
+                    _orderDetailList_New.RemoveAt(dgv_OrderDetails.CurrentCell.RowIndex);
+                }
+                this.AutoLoadDataInto_DGV_Product();
+                MessageBox.Show("Deleted the chosen order Detail.");
+            }
         }
 
         private void btn_Save_Click(object sender, EventArgs e) {
@@ -49,9 +107,30 @@ namespace SaleWinApp
 
         private void cB_Member_TextChanged(object sender, EventArgs e) {
             _memberList = _memberRepository.FilterMemberByString(cB_Member.Text);
-            this.LoadDataInto_CB(_memberList);
+            this.LoadDataInto_CB_Member(_memberList);
         }
         #region [ Load Data functions ]
+        
+        private void cb_Product_SelectedIndexChanged(object sender, EventArgs e) {
+            if (cb_Product.SelectedIndex > 0) {
+                var _tempProduct = (Product)cb_Product.SelectedItem;
+                tb_UnitPrice.Text = _tempProduct.UnitPrice.ToString();
+            } else {
+                tb_UnitPrice.Clear();
+            }
+        }
+        private void AutoLoadDataInto_DGV_Product() {
+            dgv_OrderDetails.Rows.Clear();
+            foreach (var _orderDetail in _orderDetailList_New) {
+                var tempProduct = _productRepository.GetProductById(_orderDetail.ProductId);
+                dgv_OrderDetails.Rows.Add(tempProduct, _orderDetail.UnitPrice, _orderDetail.Quantity, _orderDetail.Discount);
+            }
+        }
+
+        public void Add_DGV_OrderDetailRow(OrderDetail _orderDetail) {
+            _orderDetailList_New.Add(_orderDetail);
+            this.AutoLoadDataInto_DGV_Product();
+        }
         public void LoadDataInto_Inputs(Order _order) {
             var index = GetMemberIndex(_order);
             mTB_OrderId.Text = _order.OrderId.ToString();
@@ -63,11 +142,11 @@ namespace SaleWinApp
             mTB_Freight.Text = _tempFreightString.Remove(_tempFreightString.Length-5);
         }
 
-        public void AutoLoadDataInto_CB() {
+        public void AutoLoadDataInto_CB_Member() {
             _memberList = _memberRepository.GetMemberList();
-            this.LoadDataInto_CB(_memberList);
+            this.LoadDataInto_CB_Member(_memberList);
         }
-        public void LoadDataInto_CB(IEnumerable<Member> _memberList) {
+        public void LoadDataInto_CB_Member(IEnumerable<Member> _memberList) {
             cB_Member.Items.Clear();
             foreach (var member in _memberList) { 
                 cB_Member.Items.Add(member);
@@ -85,7 +164,36 @@ namespace SaleWinApp
                 }
             } return count;
         }
+        public void AutoLoadDataInto_CB_Product() {
+            _productList = _productRepository.GetProductList();
+            foreach (var _product in _productList) {
+                cb_Product.Items.Add(_product);
+            }
+        }
         #endregion
 
+        #region [ input functinos ]
+        public void Disable_Inputs_OrderDetail() {
+            cb_Product.Enabled = false;
+            mtb_Discount.Enabled = false;
+            mtb_Quantity.Enabled = false;
+        }
+
+        public void Enable_Inputs_OrderDetail() {
+            cb_Product.Enabled = true;
+            mtb_Discount.Enabled = true;
+            mtb_Quantity.Enabled = true;
+        }
+        public void Clear_Inputs_OrderDetail() {
+            cb_Product.SelectedIndex = -1;
+            mtb_Discount.Clear();
+            mtb_Quantity.Clear();
+        }
+        #endregion
+
+        private void frmOrderUpdate_Load() {
+            _orderDetailList_Old = _orderDetailRepository.FilterOrderDetailListByOrderId(Int32.Parse(mTB_OrderId.Text.Trim()));
+            _orderDetailList_New.AddRange(_orderDetailList_Old);
+        }
     }
 }

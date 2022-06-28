@@ -100,7 +100,7 @@ namespace SaleWinApp
                 foreach (DataGridViewRow item in dgv_OrderDetails.SelectedRows) {
                     dgv_OrderDetails.Rows.RemoveAt(item.Index);
                 }
-                this.AutoLoadDataInto_DGV();
+                this.AutoLoadDataInto_DGV_Prodcut();
                 MessageBox.Show("Deleted the chosen order.");
             }
         }
@@ -110,7 +110,7 @@ namespace SaleWinApp
             btn_CancelOrderDetail.Enabled = false;
             btn_AddOrderDetail.Text = "Add an Order Detail";
         }
-        private void AutoLoadDataInto_DGV() {
+        private void AutoLoadDataInto_DGV_Prodcut() {
             dgv_OrderDetails.Rows.Clear();
             foreach (var _orderDetail in _orderDetailList) {
                 var tempProduct = _productRepository.GetProductById(_orderDetail.ProductId);
@@ -120,7 +120,7 @@ namespace SaleWinApp
 
         public void Add_DGV_OrderDetailRow(OrderDetail _orderDetail) {
             _orderDetailList.Add(_orderDetail);
-            this.AutoLoadDataInto_DGV();
+            this.AutoLoadDataInto_DGV_Prodcut();
         }
 
         private void cb_Product_SelectedIndexChanged(object sender, EventArgs e) {
