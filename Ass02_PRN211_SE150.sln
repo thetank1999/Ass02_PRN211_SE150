@@ -9,11 +9,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataAccess", "DataAccess", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SaleWinApp", "SaleWinApp", "{810A9359-FB42-4D2F-BE2B-B807BCB34EB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinessObject", "BussinessObject\BussinessObject.csproj", "{4E05AEA8-CBBD-4397-9EE2-52AC3D121E13}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BussinessObject", "BussinessObject\BussinessObject.csproj", "{4E05AEA8-CBBD-4397-9EE2-52AC3D121E13}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{4808CAC2-3B02-4863-8F31-E75E1DFD05A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{4808CAC2-3B02-4863-8F31-E75E1DFD05A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaleWinApp", "SaleWinApp\SaleWinApp.csproj", "{3B3474DC-1144-42BB-BC73-F7D041942A35}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SaleWinApp", "SaleWinApp\SaleWinApp.csproj", "{3B3474DC-1144-42BB-BC73-F7D041942A35}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
