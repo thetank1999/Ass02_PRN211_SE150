@@ -82,7 +82,7 @@ namespace DataAccess.DAO
                     context.OrderDetails.Add(_OrderDetail);
                     context.SaveChanges();
                 } else {
-                    throw new Exception("The OrderDetail is already existed.");
+                    
                 }
             } catch (Exception ex) {
                 throw new Exception(ex.ToString());
