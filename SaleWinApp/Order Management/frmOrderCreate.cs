@@ -77,16 +77,35 @@ namespace SaleWinApp
                     
                     var _tempOrderDetail = new OrderDetail();
                     var _tempProduct = (Product)cb_Product.SelectedItem;
-                    _tempOrderDetail.ProductId = _tempProduct.ProductId;
-                    _tempOrderDetail.UnitPrice = _tempProduct.UnitPrice;
-                    _tempOrderDetail.Quantity = Int32.Parse(mtb_Quantity.Text.Trim());
-                    if (mtb_Discount.Text.Equals("")) {
-                        _tempOrderDetail.Discount = (double)0;
-                    } else {
-                        _tempOrderDetail.Discount = double.Parse(mtb_Discount.Text.Trim());
+                    int i = 0;
+                    foreach (var _orderDetail in _orderDetailList) {
+                        if (_orderDetail.ProductId == _tempProduct.ProductId) {
+                            i = 1;
+                            break;
+                        } else {
+                            i = 2;
+                        }
                     }
+                    if (i == 1) {
+                        var _orderDetail = _orderDetailList.Find(x => x.ProductId == _tempProduct.ProductId);
+                        // _orderDetailRepository.GetOrderDetailById(_tempProduct.ProductId, Int32.Parse(mTB_OrderId.Text.ToString()));
+                        int j = Int32.Parse(mtb_Quantity.Text.Trim());
+                        int result = _orderDetail.Quantity + j;
+                        _orderDetail.Quantity = result;
+                        this.AutoLoadDataInto_DGV_Product();
+                    } else {
+                        _tempOrderDetail.ProductId = _tempProduct.ProductId;
+                        _tempOrderDetail.UnitPrice = _tempProduct.UnitPrice;
+                        _tempOrderDetail.Quantity = Int32.Parse(mtb_Quantity.Text.Trim());
+                        if (mtb_Discount.Text.Equals("")) {
+                            _tempOrderDetail.Discount = (double)0;
+                        } else {
+                            _tempOrderDetail.Discount = double.Parse(mtb_Discount.Text.Trim());
+                        }
+                        this.Add_DGV_OrderDetailRow(_tempOrderDetail);
+                    }
+
                     btn_CancelOrderDetail.Enabled = false;
-                    this.Add_DGV_OrderDetailRow(_tempOrderDetail);
                     btn_AddOrderDetail.Text = "Add an Order Detail";
                     this.Disable_Inputs_OrderDetail();
                     this.Clear_Inputs_OrderDetail();
@@ -100,7 +119,7 @@ namespace SaleWinApp
                 foreach (DataGridViewRow item in dgv_OrderDetails.SelectedRows) {
                     dgv_OrderDetails.Rows.RemoveAt(item.Index);
                 }
-                this.AutoLoadDataInto_DGV_Prodcut();
+                this.AutoLoadDataInto_DGV_Product();
                 MessageBox.Show("Deleted the chosen order.");
             }
         }
@@ -110,7 +129,7 @@ namespace SaleWinApp
             btn_CancelOrderDetail.Enabled = false;
             btn_AddOrderDetail.Text = "Add an Order Detail";
         }
-        private void AutoLoadDataInto_DGV_Prodcut() {
+        private void AutoLoadDataInto_DGV_Product() {
             dgv_OrderDetails.Rows.Clear();
             foreach (var _orderDetail in _orderDetailList) {
                 var tempProduct = _productRepository.GetProductById(_orderDetail.ProductId);
@@ -120,11 +139,11 @@ namespace SaleWinApp
 
         public void Add_DGV_OrderDetailRow(OrderDetail _orderDetail) {
             _orderDetailList.Add(_orderDetail);
-            this.AutoLoadDataInto_DGV_Prodcut();
+            this.AutoLoadDataInto_DGV_Product();
         }
 
         private void cb_Product_SelectedIndexChanged(object sender, EventArgs e) {
-            if (cb_Product.SelectedIndex > 0) {
+            if (cb_Product.SelectedIndex > -1) {
                 var _tempProduct = (Product)cb_Product.SelectedItem;
                 tb_UnitPrice.Text = _tempProduct.UnitPrice.ToString();
             } else {
